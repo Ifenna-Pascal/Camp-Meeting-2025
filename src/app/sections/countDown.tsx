@@ -1,7 +1,11 @@
-import { CalendarEdit, Star1 } from 'iconsax-react'
-import React from 'react'
+'use client'
+import { CalendarEdit, Information, Star1 } from 'iconsax-react'
+import React, { useRef, useState } from 'react'
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 
 const CountDown = () => {
+    const testimonialSwiper = useRef<SwiperRef>(null);
+    const [activeSlide, setActiveSlide] = useState(1);
   return (
     <div>
         <div className='bg-image-with-overlays items-center flex flex-col justify-center -mt-5 study-bg-imgs p-10 pt-12 h-[450px]'>
@@ -15,15 +19,15 @@ const CountDown = () => {
         </div>
         <div className='flex flex-col  items-center justify-center py-10'>
             <CalendarEdit size="32" color="#697689" variant="Bold"/>
-            <span className='py-2'>5 Days</span>
-            <span className='text-center  w-[300px]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, totam.</span>
+            <span className='py-2 text-[16px]'>5 Days</span>
+            <span className='text-center  w-[300px]'>Monday(17th February) - Friday(22nd February)</span>
         </div>
-        <div className='flex flex-col items-center justify-center pb-12'>
-            <CalendarEdit size="32" color="#697689" variant="Bold"/>
-            <span  className='py-2'>5 Days</span>
-            <span className='text-center  w-[300px]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, totam.</span>
+        <div className='flex flex-col items-center justify-center pb-14'>
+        <Information size="32" color="#697689" variant="Bold"/>          
+          <span  className='py-2'>3 Sessions Per Day</span>
+            <span className='text-center  w-[300px]'>Morning Worship, Variety Sessions, Evening Sessions</span>
         </div>
-        <div className='flex flex-col items-center justify-center pb-12'>
+        <div className='flex flex-col items-center justify-center pb-14'>
             <CalendarEdit size="32" color="#697689" variant="Bold"/>
             <span  className='py-2'>5 Days</span>
             <span className='text-center  w-[300px]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, totam.</span>

@@ -15,7 +15,7 @@ body {
 }
 
 .bg-image-with-overlay {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0.4)), url('/img/hero.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 255, 0.6)), url('/img/hero.jpg');
   background-size: cover;
 }
 
@@ -26,6 +26,6 @@ body {
 
 
 .study-bg-imgs {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/study.jpg');
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('/img/study.jpg');
   background-size: cover;
 }

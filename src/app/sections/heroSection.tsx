@@ -12,7 +12,7 @@ const HeroSection = () => {
             <HambergerMenu size="32" color="#ffffff"/>
         </nav>
         <div className=' flex flex-col items-center justify-center h-[65vh]'>
-        <h1 className='text-white lg:text-[4rem]  text-[2.5rem] text-center font-semibold lg:w-[800px]'>Young People Love Jesus Camp Meeting 2025</h1>
+        <h1 className='text-white lg:text-[3rem]  text-[2rem] text-center font-semibold px-4 lg:w-[800px]'>Young People Love Jesus Camp Meeting 2025</h1>
         <p className='text-white text-center p-6 text-[20px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ad, cum tenetur aspernatur Mollitia animi eaque saepe, obcaecati sed iure!</p>
         <button onClick={() => router.push('/register')} className='w-[240px] border-white border text-white py-4 font-semibold text-[18px]'>Register Here</button>
         </div>

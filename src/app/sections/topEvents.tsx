@@ -56,10 +56,10 @@ const TopEvents = () => {
             }
         </div>
         <Timer />
-        <div className='bg-image-with-overlay mt-10 study-bg-imgs p-10 pt-12 h-[550px]'>
-            <Image src={'/img/man.jpg'} alt='pastor_image' width={350} height={400} />
+        <div className='bg-image-with-overlay mt-10 study-bg-imgs p-10 relative pt-12 h-[550px]'>
+            <Image src={'/img/man.jpg'} alt='pastor_image' className='absolute -bottom-12' width={320} height={350} />
         </div>
-        <div className='flex flex-col p-10 pt-12 items-center justify-center'>
+        <div className='flex flex-col p-10 pt-20     items-center justify-center'>
             <span className='font-semibold text-[16px] pb-2'>FROM THE OFFICE OF THE PRESIDENT</span>
             <p className='text-center text-[16px]'>Lorem ipsum, dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui labore, consequatur voluptatum mollitia sint distinctio laudantium nostrum aliquam? Doloribus, assumenda? sit amet consectetur adipisicing elit. Distinctio a eaque labore quas rerum quidem, quaerat itaque maiores rem natus optio voluptates laboriosam similique fugit iusto architecto! Perferendis, voluptas debitis.</p>
             <button 
