@@ -8,13 +8,16 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sono: ["Sono", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        montserat: ["Montserrat", "sans-serif"],
+        gara: ["Cormorant Garamond", 'serif']
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-      // backgroundImage: {
-      //   'image-with-overlay' : 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/hero.jpg")'
-      // }
     },
   },
   plugins: [],

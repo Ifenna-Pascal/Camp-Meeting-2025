@@ -15,6 +15,10 @@ interface ITextArea  {
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
     label: string;
     err?: string;
+    options: {
+      label: string;
+      value: string;
+    }[]
 }
 
 export const InputComponent = ({label, err, placeholder, ...props}:IProp) => {
@@ -28,16 +32,18 @@ export const InputComponent = ({label, err, placeholder, ...props}:IProp) => {
     </div>
   )
 }
-export const SelectInput = ({label, err, ...props}:SelectProps) => {
+export const SelectInput = ({label, err, options, ...props}:SelectProps) => {
     return     <div className='flex flex-col mb-6'>
     <div className='flex items-center space-x-1'>
     <label className='mb-1' htmlFor={label}>{label}</label> <span className='text-red-600 text-[20px]'>*</span>
     </div>
     <select className='w-full p-3 rounded-[3px] h-[50px] border border-gray-300 focus:outline-none' {...props}>
-        <option value="lagos">Lagos</option>
-        <option value="umuahia">Umuahia</option>
-        <option value="enugu">Enugu</option>
-        <option value="nsukka">Nsukka</option>
+        <option disabled defaultChecked>Select</option>
+        {
+          options.map((option, index) => (
+            <option key={index} value={option.value}>{option.label}</option>
+          ))
+        }
     </select>
     <span className='text-red-400'>{err}</span>
 </div>
@@ -53,7 +59,7 @@ export const TextAreaInput = ({label, err, placeholder, ...props}:ITextArea) => 
             cols={30}
             rows={30}
           {...props}
-          className='w-full p-3 rounded-[6px] h-[130px] border border-gray-300 focus:outline-none' placeholder={placeholder} {...props}>Comment... </textarea>
+          className='w-full p-3 rounded-[6px] h-[130px] border border-gray-300 focus:outline-none' placeholder={placeholder} {...props}> </textarea>
           <span className='text-red-400'>{err}</span>
       </div>
     )

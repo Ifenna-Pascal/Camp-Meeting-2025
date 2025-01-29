@@ -46,11 +46,11 @@ const Timer = () => {
 
 
   return (
-    <div className='flex py-16 px-4 flex-col items-center justify-center'>
+    <div className='flex py-8  border mx-8 mt-12 shadow-sm mb-6 px-4 flex-col items-center justify-center'>
       <h1 className='uppercase text-center text-semibold pb-4'>WE ARE counting down !!!</h1>
         {
             display && 
-    <span className='text-[24px] font-bold'>{days}Days : {hours}Hrs : {mins}Mins : {secs}Secs</span>
+    <span className='text-[17px] font-poppins font-semibold'>{days}Days : {hours}Hrs : {mins}Mins : {secs}Secs</span>
             
         }
 </div>
