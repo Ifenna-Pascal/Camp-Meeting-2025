@@ -7,7 +7,7 @@ import { ministers } from "@/__mock_data__/ministers";
 import Image from "next/image";
 
 const Guests = () => {
-  const [current, setCurrent] = useState(false);
+  const [current, setCurrent] = useState(0);
   const settings = {
     className: "center",
     autoplay: true,
@@ -15,13 +15,12 @@ const Guests = () => {
     slidesToShow: 2,
     arrows: false,
     slideToScrool: 2,
-    lazyLoad: true,
     focusOnSelect: true,
     draggable: true,
     dots: true,
     autoplaySpeed: 5000,
     speed: 2000,
-    afterChange: (current: boolean) => setCurrent(current),
+    afterChange: (current: number) => setCurrent(current),
     customPaging: (i: any) => (
       <div
         className={`w-[25px]  mt-8 h-[4px] rounded-[10px] ${
@@ -43,7 +42,7 @@ const Guests = () => {
           dots: true,
           autoplaySped: 1000,
           speed: 500,
-          beforeChange: (current:any) => setCurrent(current),
+          beforeChange: (current:number) => setCurrent(current),
           customPaging: (i: any) => (
             <div
               className={`w-[3px]  mt-3 h-[3px] rounded-[3px] ${
@@ -58,7 +57,7 @@ const Guests = () => {
 
   return (
     <div className="lg:max-w-[1100px] mx-11  mb-12">
-    <h2 className='font-semibold text-[22px] mb-2 font-semibold  text-center flex items-center justify-center pb-2'>Our Ministers</h2>
+    <h2 className='font-semibold text-[22px] mb-2   text-center flex items-center justify-center pb-2'>Our Ministers</h2>
       <Slider {...settings}>
         {
             ministers.map((minister, i) => {

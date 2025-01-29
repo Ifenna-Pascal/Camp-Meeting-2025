@@ -6,7 +6,7 @@ import { useState } from "react";
 import ReviewCard from "./reviewCard";
 
 const ReviewCarousel = () => {
-  const [current, setCurrent] = useState(false);
+  const [current, setCurrent] = useState(0);
   const settings = {
     className: "center",
     autoplay: true,
@@ -14,13 +14,12 @@ const ReviewCarousel = () => {
     slidesToShow: 2,
     arrows: false,
     slideToScrool: 2,
-    lazyLoad: true,
     focusOnSelect: true,
     draggable: true,
     dots: true,
     autoplaySpeed: 5000,
     speed: 2000,
-    afterChange: (current: boolean) => setCurrent(current),
+    afterChange: (current: number) => setCurrent(current),
     customPaging: (i: any) => (
       <div
         className={`w-[25px]  mt-2 h-[4px] rounded-[10px] ${
@@ -42,7 +41,7 @@ const ReviewCarousel = () => {
           dots: true,
           autoplaySped: 1000,
           speed: 500,
-          beforeChange: (current:any) => setCurrent(current),
+          beforeChange: (current:number) => setCurrent(current),
           customPaging: (i: any) => (
             <div
               className={`w-[20px]  mt-4 h-[4px] rounded-[10px] ${
