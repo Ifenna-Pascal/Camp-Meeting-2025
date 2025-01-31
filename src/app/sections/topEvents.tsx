@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Timer from './timer';
 import { useRouter } from 'next/navigation';
 import { DetailsModal } from '../details-modal';
-import { seminarImages } from '@/__mock_data__/events';
+import { gamesImages, musicImages, seminarImages, wordImages } from '@/__mock_data__/events';
 
 interface IEvent {
     img: string;
@@ -17,17 +17,17 @@ const events = [
     {
         img: '/img/study.jpg',
         title: 'The Word',
-        imgs: []
+        imgs: wordImages
     },
     {
         img: '/img/people.jpg',
         title: 'Heart of Music',
-        imgs: []
+        imgs: musicImages
     },
     {
         img: '/img/chess.jpg',
         title: 'Games & Sports',
-        imgs: []
+        imgs: gamesImages
     },
     {
         img: '/img/seminar-2.jpg',
@@ -38,18 +38,21 @@ const events = [
 
 const Event = ({img, title, imgs, point}: IEvent) => {
     const [showDetails, setShowDetails] = useState(false);
-    // const [current, setCurrent] = useState(0)
-    // const setAction = (index: number) => {
-    //     setCurrent(index);
-    //     setShowDetails(true)
-    // }
-    // onClick={() => setAction(point)}
+    const [current, setCurrent] = useState(0)
+    const setAction = (index: number) => {
+        setCurrent(index);
+        setShowDetails(true)
+    }
+    
     return (
-        <div className='flex flex-col w-full h-[250px]' >
+        <>
+            <div className='flex flex-col w-full h-[250px]' onClick={() => setAction(point)}>
         <Image src={img} width={200} height={220} alt="event-img" className='w-[210px] h-[210px] rounded-md object-cover mb-3' />
         <span className='text-center h-[50px] font-poppins text-[14px] font-semibold'>{title}</span>
-        {/* {showDetails && point === current && <DetailsModal images={imgs} open={showDetails} close={() => setShowDetails(false)} title={`${title} In A Glance`} />} */}
     </div>
+        {showDetails && point === current && <DetailsModal images={imgs} open={showDetails} close={() => setShowDetails(false)} title={`${title} In A Glance`} />}
+
+        </>
 
     )
 }

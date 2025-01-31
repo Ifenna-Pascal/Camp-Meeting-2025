@@ -62,6 +62,8 @@ const RegistrationPage = () => {
             ...data,
             accessToken: token,
             id: "TIMESTAMP",
+            date: new Date().toDateString(),
+            time: new Date().toLocaleTimeString(),
           }),
         })
           .then(() => {
