@@ -43,7 +43,7 @@ const RegistrationPage = () => {
 
       const submitHandler = async (data: any) => {
         setLoading(true);
-        const info = await emailExists(data.email, 'https://sheetdb.io/api/v1/bx688nkln60rt' as string).catch(() => {
+        const info = await emailExists(data.email, 'https://sheetdb.io/api/v1/uvetxjfjpms7z' as string).catch(() => {
           setLoading(false);
          return  toast.error('something went wrong!!');
         });
@@ -53,7 +53,7 @@ const RegistrationPage = () => {
           return;
         }
         const token = generateRandomToken()
-        fetch('https://sheetdb.io/api/v1/bx688nkln60rt' as string, {
+        fetch('https://sheetdb.io/api/v1/uvetxjfjpms7z' as string, {
           headers: {
             "Content-Type": "application/json",
           },
