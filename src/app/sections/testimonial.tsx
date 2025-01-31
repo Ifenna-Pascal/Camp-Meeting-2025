@@ -55,7 +55,7 @@ const ReviewCarousel = () => {
   };
 
   return (
-    <div className="lg:max-w-[1100px] mb-12 mx-auto">
+    <div id="testimonials" className="lg:max-w-[1100px] mb-12 mx-auto">
       <Slider {...settings}>
         <ReviewCard
           name="Ben Victorious"

@@ -8,6 +8,23 @@ export const ministers = [
         name: 'Apostle De-Joe (Lagos)'
     },
     {
+        img: '/img/pst-godswill.jpeg',
+        name: 'Pst. John Godswill (Enugu)'
+    },
+    
+    {
+        img: '/img/pst-george.jpeg',
+        name: 'Pst. George Wilfred (Umuahia)'
+    },
+    {
+        img: '/img/pst.favour.jpeg',
+        name: 'Pst. Peter Favour (Nsukka)'
+    },
+    {
+        img: '/img/min-cbn.jpeg',
+        name: 'Minister CBN (Enugu)'
+    },
+    {
         img: '/img/oracle.jpeg',
         name: "Min. God's Oracle (Enugu)"
     },

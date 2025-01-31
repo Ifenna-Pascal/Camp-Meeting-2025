@@ -46,7 +46,7 @@ const Timer = () => {
 
 
   return (
-    <div className='flex py-8  border mx-8 mt-12 shadow-sm mb-6 px-4 flex-col items-center justify-center'>
+    <div data-aos="fade-left" className='flex py-8  border mx-8 mt-12 shadow-sm mb-6 px-4 flex-col items-center justify-center'>
       <h1 className='uppercase text-center text-semibold pb-4'>WE ARE counting down !!!</h1>
         {
             display && 

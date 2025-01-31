@@ -1,0 +1,1 @@
+export const seminarImages = ['/event/1.jpeg', '/event/2.jpeg']

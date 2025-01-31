@@ -56,8 +56,8 @@ const Guests = () => {
   };
 
   return (
-    <div className="lg:max-w-[1100px] mx-11  mb-12">
-    <h2 className='font-semibold text-[22px] mb-2   text-center flex items-center justify-center pb-2'>Our Ministers</h2>
+    <div id="ministering" data-aos="zoom-in" className="lg:max-w-[1100px] mx-11  mb-12">
+    <h2 className='font-semibold text-[22px] mb-2   text-center flex items-center justify-center pb-2'>Ministering...</h2>
       <Slider {...settings}>
         {
             ministers.map((minister, i) => {

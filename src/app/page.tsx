@@ -1,4 +1,5 @@
 'use client'
+// import { useEffect } from "react"; 
 import CountDown from "./sections/countDown";
 import Guests from "./sections/guests";
 import HeroSection from "./sections/heroSection";

@@ -12,26 +12,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { HambergerMenu } from 'iconsax-react';
 import SuccessModal from '../success-modal';
+import { MobileNav } from '../sections/mobile-nav';
 
 
 const contactSchema = yup.object().shape({
   firstname: yup.string().required("first name is required"),
   lastname: yup.string().required("last name is required"),
   email: yup.string().email().required("email is required"),
-  branch: yup.string().required("branch name is required"),
+  branch: yup.string().optional(),
   ageRange: yup.string().required('select age range'),
   location: yup.string().required("location is required"),
-  gender: yup.string().required('Gender s required'),
+  origin : yup.string().required('state of origin is required'),
+  gender: yup.string().required('gender is required'),
   hasDisability: yup.string().required(),
   expectations: yup.string().optional(),
 });
 
-
-
-
-
 const RegistrationPage = () => {
     const [open, setOpen] = useState(false);
+    const [navState, setNavState] = useState(false);
     const [loading, setLoading] = useState(false);
     const {
         register,
@@ -108,7 +107,7 @@ const RegistrationPage = () => {
                 height={60}
               />
             </Link>
-            <HambergerMenu size="32" color="#ffffff"/>
+            <HambergerMenu onClick={() => setNavState(true)} size="32" color="#ffffff"/>
         </nav>
         <h1 className='text-white text-center mt-8 text-[30px] font-semibold'>Register</h1>
     </div>
@@ -131,7 +130,18 @@ const RegistrationPage = () => {
             placeholder='johndoe@gmail.com' 
             {...register("email")}
             err={errors["email"]?.message}
-
+        />
+           <SelectInput label='Select Gender' options={[
+          {
+            value: 'male',
+            label: 'Male'
+          },
+          {
+            value: 'female',
+            label: 'Female'
+          },
+        ]} 
+        {...register("gender")}
         />
 
         <SelectInput label='Select Age Range'
@@ -156,8 +166,19 @@ const RegistrationPage = () => {
                     },
           ]}
         />
+        <SelectInput label='State of Origin '
+          {...register("origin")}
+          err={errors["origin"]?.message}
+          options={nigeriaStates}
+        />
+        <SelectInput label='State Of Residence'
+          {...register("location")}
+          err={errors["location"]?.message}
+          options={nigeriaStates}
+        />
         <SelectInput label='Select YEMs Branch Closest To You'
           {...register("branch")}
+          optional={true}
           err={errors["branch"]?.message}
           options={[
             {
@@ -178,28 +199,6 @@ const RegistrationPage = () => {
             },
           ]}
         />
-
-        <SelectInput label='Select State'
-          {...register("location")}
-          err={errors["location"]?.message}
-          options={nigeriaStates}
-        />
-        
-        <SelectInput label='Select Gender' options={[
-          {
-            value: 'male',
-            label: 'Male'
-          },
-          {
-            value: 'female',
-            label: 'Female'
-          },
-        ]} 
-        {...register("gender")}
-      
-        />
-
-
     <SelectInput label='Any Disability' 
           {...register("hasDisability")}
         options={[
@@ -214,6 +213,7 @@ const RegistrationPage = () => {
         ]} />
       
         <TextAreaInput 
+            optional
             placeholder='My expectations !!!!'
             label='What are your expectations?' 
           {...register("expectations")}
@@ -222,6 +222,7 @@ const RegistrationPage = () => {
     </form>
     <ToastContainer />
     <SuccessModal open={open} close={() => setOpen(false)} />
+    <MobileNav open={navState} close={() => setNavState(false)}/>  
   </div>
   )
 }
