@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { SearchNormal } from 'iconsax-react'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDebounce } from './debounce';
 
 interface IMember {
@@ -16,39 +16,74 @@ interface IMember {
     gender: string;
     hasDisability: string;
     expectations: string;
-    accessToken: string
+    accessToken: string;
+    status: string
 }
 
 const Members = () => {
     const [input, setInput] = useState('');
+    const [id, setId] = useState('')
+    const [loadingStatus, setLoadingStatus] = useState(false)
     const [loading, setLoading] = useState(false)
-     const [members, setMembers] = useState<IMember[] | null>(null)
+    const search = useDebounce(input)
+    const [members, setMembers] = useState<IMember[] | null>(null)
     const handleChange = (e:any) => {
         setInput(e.target.value)
     }
 
-const search = useDebounce(input)
+   const getMembers = useCallback(() => {
+        if(search){
+          if(search.toLowerCase() === 'paid' || search.toLowerCase() === 'unpaid') {
+            fetch(`https://sheetdb.io/api/v1/uvetxjfjpms7z/search?status=${search}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setMembers(data)
+                setLoading(false)
+            });
+            return     
+          }
+         fetch(`https://sheetdb.io/api/v1/uvetxjfjpms7z/search?accessToken=YPLJ-2025-${search}`)
+         .then((response) => response.json())
+         .then((data) => {
+             setMembers(data)
+             setLoading(false)
+         });
+        }else {
+         fetch(`https://sheetdb.io/api/v1/uvetxjfjpms7z?sort_by=id&sort_order=desc`)
+         .then((response) => response.json())
+         .then((data) => {
+             setLoading(false)
+             setMembers(data)
+         });
+        }
+    }, [search])
+    
 useEffect(()=> {
     setLoading(true)
-    const getMembers = () => {
-       if(search){
-        fetch(`https://sheetdb.io/api/v1/uvetxjfjpms7z/search?accessToken=YPLJ-2025-${search}`)
-        .then((response) => response.json())
-        .then((data) => {
-            setMembers(data)
-            setLoading(false)
-        });
-       }else {
-        fetch(`https://sheetdb.io/api/v1/uvetxjfjpms7z?sort_by=id&sort_order=desc`)
-        .then((response) => response.json())
-        .then((data) => {
-            setLoading(false)
-            setMembers(data)
-        });
-       }
-    }
     getMembers()
-}, [search])
+}, [getMembers, search])
+
+const togglePaymentStatus = (accessToken: string, status: string) => {
+  setLoadingStatus(true)
+  setId(accessToken)
+  fetch(`https://sheetdb.io/api/v1/uvetxjfjpms7z/accessToken/${accessToken}`, {
+    method: 'PATCH',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        data: {
+            'status': `${status === 'Paid' ? 'unPaid' : 'Paid'}`
+        }
+    })
+})
+  .then((response) => response.json())
+  .then(() => {
+    getMembers()
+    setLoadingStatus(false)
+  });
+}
 
   return (
     <div>
@@ -58,7 +93,7 @@ useEffect(()=> {
        
        <div className='p-6 relative'>
        <SearchNormal size="20" color="#697689" className='absolute left-10 top-10'/>
-        <input type="text" onChange={handleChange} placeholder='Search by access code 4 digit numbers' className='w-full text-[16px] h-[35px] font-poppins bg-gray-50 p-6 pl-12 focus:outline-none mb-6' />
+        <input type="text" onChange={handleChange} placeholder='Search by access code 4 digit numbers or search by Paid or unPaid' className='w-full text-[16px] h-[35px] font-poppins bg-gray-50 p-6 pl-12 focus:outline-none mb-6' />
        <div>
       <div className="overflow-x-auto font-poppins">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
@@ -72,11 +107,11 @@ useEffect(()=> {
               <th className="px-6 py-3 text-left text-sm font-semibold">Location</th>
               <th className="px-6 py-3 text-left text-sm font-semibold">Gender</th>
               <th className="px-6 py-3 text-left text-sm font-semibold">Has Disability</th>
-
+              <th className="px-6 py-3 text-left text-sm font-semibold">Payment Status</th>
             </tr>
           </thead>
           <tbody className='capitalize'>
-            {loading && <div className='flex items-center text-[18px] justify-center'>Loading...</div>}
+            {loading && <div className='flex items-center text-[14px] justify-center'>Loading...</div>}
             {members && members.map((user, index) => (
               <tr
                 key={user.email}
@@ -90,7 +125,9 @@ useEffect(()=> {
                 <td className="px-6 py-4">{user.location}</td>            
                 <td className="px-6 py-4">{user.gender}</td>
                 <td className="px-6 py-4">{user.hasDisability}</td>
-
+                <td className="px-6 py-4">
+                  <button onClick={() => togglePaymentStatus(user.accessToken, user.status)} className={`${user.status === 'Paid' ? 'bg-red-500' : 'bg-green-500'} p-2 text-[13px] rounded-[4px]  text-white`}>{loadingStatus && id === user.accessToken ? 'Loading...' : `${user.status === 'Paid' ? 'Revoke' : 'Pay Now'}` }</button>
+                </td>
 
               </tr>
             ))}

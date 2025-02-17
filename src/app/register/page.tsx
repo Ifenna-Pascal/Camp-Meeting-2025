@@ -63,6 +63,7 @@ const RegistrationPage = () => {
             ...data,
             accessToken: token,
             id: "TIMESTAMP",
+            status: 'unPaid',
             date: new Date().toDateString(),
             time: new Date().toLocaleTimeString(),
           }),
@@ -91,9 +92,8 @@ const RegistrationPage = () => {
             })
           })
          
-          .catch((err) => {
+          .catch(() => {
             setLoading(false);
-            console.error("Error submitting form:", err);
             toast.error("An error occurred. Please try again");
           })
        
