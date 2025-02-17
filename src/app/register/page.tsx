@@ -27,6 +27,7 @@ const contactSchema = yup.object().shape({
   hasDisability: yup.string().required(),
   expectations: yup.string().optional(),
 });
+  
 
 const RegistrationPage = () => {
     const [open, setOpen] = useState(false);

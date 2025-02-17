@@ -13,7 +13,7 @@ const Timer = () => {
 
   // time counter function
   const startTimer = () => {
-    const countdownDate = new Date("Feb 17, 2025 12:00:00").getTime();
+    const countdownDate = new Date("Feb 17, 2025 18:00:00").getTime();
     interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = countdownDate - now;
@@ -47,11 +47,16 @@ const Timer = () => {
 
   return (
     <div data-aos="fade-left" className='flex py-8  border mx-8 mt-12 shadow-sm mb-6 px-4 flex-col items-center justify-center'>
-      <h1 className='uppercase text-center text-semibold pb-4'>WE ARE counting down !!!</h1>
         {
-            display && 
-    <span className='text-[17px] font-poppins font-semibold'>{days}Days : {hours}Hrs : {mins}Mins : {secs}Secs</span>
-            
+            display ? 
+            <>
+                <h1 className='uppercase text-center text-semibold pb-4'>WE ARE counting down !!!</h1>
+
+                <span className='text-[17px] font-poppins font-semibold'>{days}Days : {hours}Hrs : {mins}Mins : {secs}Secs</span>
+            </>
+            : <div>
+              <span className='text-[15px] font-montserat text-center'>CAMP MEETING 2025 IS HERE</span>
+            </div>
         }
 </div>
   )
