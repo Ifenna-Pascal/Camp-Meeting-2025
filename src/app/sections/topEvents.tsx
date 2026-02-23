@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { DetailsModal } from "../details-modal";
 import {
   gamesImages,
-  musicImages,
+  pageantImages,
   seminarImages,
   wordImages,
 } from "@/__mock_data__/events";
@@ -24,21 +24,25 @@ const events = [
     title: "The Word",
     imgs: wordImages,
   },
+
   {
-    img: "/img/people.jpg",
-    title: "Heart of Music",
-    imgs: musicImages,
+    img: "/img/pageant.jpg",
+    title: "Pageantry",
+    imgs: pageantImages,
   },
+
   {
     img: "/img/chess.jpg",
     title: "Games & Sports",
     imgs: gamesImages,
   },
+
   {
     img: "/img/seminar-2.jpg",
     title: "Seminars",
     imgs: seminarImages,
   },
+
 ];
 
 const Event = ({ img, title, imgs, point }: IEvent) => {
