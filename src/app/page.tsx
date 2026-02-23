@@ -24,7 +24,9 @@ export default function Home() {
       <CountDown />
       <ReviewCarousel />
       <div className="bg-gray-600 flex items-center justify-center w-full py-5 h-[60px]">
-        <span className="text-white text-center">YPLJ Camping Meeting @2025</span>
+        <span className="text-white text-center">YPLJ Camping Meeting @2026
+          
+        </span>
       </div>
     </div>
   );

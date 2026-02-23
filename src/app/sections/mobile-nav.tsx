@@ -21,4 +21,4 @@ export const MobileNav = ({open, close}: {open: boolean, close: () => void}) => 
     </div>
    )
   }
-  
+
