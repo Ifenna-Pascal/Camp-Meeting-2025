@@ -7,7 +7,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import { nigeriaStates } from '@/__mock_data__/states';
-import { emailExists, generateRandomToken } from '../config/random';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HambergerMenu } from 'iconsax-react';
@@ -52,13 +51,26 @@ const RegistrationPage = () => {
             body: JSON.stringify(data),
           });
           const result = await res.json();
-          
+
+          if (!res.ok) {
+            const message =
+              (result && (result.message || result.error || result.errors?.[0])) ||
+              'Something went wrong. Please try again.';
+            throw new Error(message);
+          }
+
+          reset()
           if (result.data.authorizationUrl) {
             window.open(result.data.authorizationUrl, '_blank');
           }
 
           setLoading(false);
-        } catch (error) {
+        } catch (error: unknown) {
+          if (error instanceof Error) {
+            toast.error(error.message);
+          } else {
+            toast.error('Something went wrong. Please try again.');
+          }
           setLoading(false);
         }
       }
