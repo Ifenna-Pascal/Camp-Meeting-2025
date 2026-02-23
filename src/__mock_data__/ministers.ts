@@ -20,15 +20,15 @@ export const ministers = [
         img: '/img/pst.favour.jpeg',
         name: 'Pst. Peter Favour (Nsukka)'
     },
-    // {
-    //     img: '/img/Minister-1.jpg',
-    //     name: ''
-    // },
     {
-        img: '/img/Minister-2.jpg',
-        name: "Joseph Nnaji (Enugu)"
+        img: '/img/Minister-1.jpg',
+        name: 'Joseph Nnaji (Enugu)'
     },
     // {
+    //     img: '/img/Minister-2.jpg',
+    //     name: ""
+    // },
+    // // {
     //     img: '/img/lagos-min.jpeg',
     //     name: 'Pst. Ben Jossy (Lagos)'
     // },
