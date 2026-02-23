@@ -1,13 +1,13 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { Suspense, useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import AppModal from '../modal'
 
 const BASE_URL = 'https://api.mallgrid.com'
 
-export enum CamperPaymentStatus {
+enum CamperPaymentStatus {
   PENDING_PAYMENT = 'pending_payment',
   PAID = 'paid',
   FAILED = 'failed',
@@ -28,7 +28,7 @@ async function verifyPaymentReference(reference: string) {
   return { ok: res.ok, json }
 }
 
-export default function RecieptPage() {
+function RecieptPageContent() {
   const searchParams = useSearchParams()
   const reference = useMemo(() => searchParams.get('reference')?.trim() ?? '', [searchParams])
 
@@ -178,5 +178,25 @@ export default function RecieptPage() {
         </div>
       </AppModal>
     </div>
+  )
+}
+
+export default function RecieptPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#F8F9FA]">
+          <div className="mx-auto w-full max-w-[900px] px-6 py-10">
+            <h1 className="font-poppins text-[28px] font-semibold text-grey-900">Receipt</h1>
+            <p className="mt-2 text-[14px] text-gray-600">Loading receipt…</p>
+            <div className="mt-6 rounded-xl bg-white p-6">
+              <p className="text-gray-700">Verifying payment…</p>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <RecieptPageContent />
+    </Suspense>
   )
 }
