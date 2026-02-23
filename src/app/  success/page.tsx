@@ -30,7 +30,7 @@ async function verifyPaymentReference(reference: string) {
 
 function RecieptPageContent() {
   const searchParams = useSearchParams()
-  const reference = useMemo(() => searchParams.get('reference')?.trim() ?? '', [searchParams])
+  const reference = useMemo(() => searchParams.get('trxref')?.trim() ?? '', [searchParams])
 
   const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
