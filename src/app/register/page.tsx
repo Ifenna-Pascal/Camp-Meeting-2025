@@ -7,7 +7,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import { nigeriaStates } from '@/__mock_data__/states';
-import { emailExists, generateRandomToken } from '../config/random';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HambergerMenu } from 'iconsax-react';
@@ -28,6 +27,7 @@ const contactSchema = yup.object().shape({
   expectations: yup.string().optional(),
 });
   
+const BASE_URL = 'https://api.mallgrid.com'
 
 const RegistrationPage = () => {
     const [open, setOpen] = useState(false);
@@ -44,60 +44,36 @@ const RegistrationPage = () => {
 
       const submitHandler = async (data: any) => {
         setLoading(true);
-        const info = await emailExists(data.email, 'https://sheetdb.io/api/v1/taxlfm0bcnac1' as string).catch(() => {
+        try {
+          const res = await fetch(`${BASE_URL}/api/v1/camping/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const result = await res.json();
+
+          if (!res.ok) {
+            const message =
+              (result && (result.message || result.error || result.errors?.[0])) ||
+              'Something went wrong. Please try again.';
+            throw new Error(message);
+          }
+
+          reset()
+          if (result.data.authorizationUrl) {
+            window.open(result.data.authorizationUrl, '_blank');
+          }
+
           setLoading(false);
-         return  toast.error('something went wrong!!');
-        });
-        if (info) {
-          toast.error(info);
+        } catch (error: unknown) {
+          if (error instanceof Error) {
+            toast.error(error.message);
+          } else {
+            toast.error('Something went wrong. Please try again.');
+          }
           setLoading(false);
-          return;
         }
-        const token = generateRandomToken()
-        fetch('https://sheetdb.io/api/v1/taxlfm0bcnac1' as string, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify({
-            ...data,
-            accessToken: token,
-            id: "TIMESTAMP",
-            status: 'unPaid',
-            date: new Date().toDateString(),
-            time: new Date().toLocaleTimeString(),
-          }),
-        })
-          .then(() => {
-            fetch( `https://mallgrid-backend-5gh9.onrender.com/api/v1/auth/send-camp-mail`, {
-              headers: {
-                "Content-Type": "application/json",
-              },
-              method: "POST",
-              body: JSON.stringify({
-                code: token,
-                firstName: data.firstname,
-                email: data.email
-              }),
-            })
-            .then(() => {
-              setLoading(false);
-              toast.success("Message sent successfully");
-              setOpen(true)
-              reset();
-            })
-            .catch((err) => {
-              setLoading(false);
-              throw err
-            })
-          })
-         
-          .catch(() => {
-            setLoading(false);
-            toast.error("An error occurred. Please try again");
-          })
-       
-      };
+      }
   return (
   <div>
     <div className='lg:h-[30vh] h-[30vh] w-full bg-image-with-overlay'>
@@ -202,7 +178,7 @@ const RegistrationPage = () => {
             },
           ]}
         />
-    <SelectInput label='Any Disability' 
+        <SelectInput label='Any Disability' 
           {...register("hasDisability")}
         options={[
           {
