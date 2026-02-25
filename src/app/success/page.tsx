@@ -100,43 +100,11 @@ function RecieptPageContent() {
         : 'Payment Failed'
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
-      <div className="mx-auto w-full max-w-[900px] px-6 py-10">
-        <h1 className="font-poppins text-[28px] font-semibold text-grey-900">Receipt</h1>
-        <p className="mt-2 text-[14px] text-gray-600">
-          {reference ? (
-            <>
-              Verifying payment reference: <span className="font-semibold">{reference}</span>
-            </>
-          ) : (
-            'No payment reference found in the URL.'
-          )}
-        </p>
+    <div className="min-h-screen flex items-center bg-[#F8F9FA]">
+   
 
-        <div className="mt-6 rounded-xl bg-white p-6">
-          {loading ? (
-            <p className="text-gray-700">Verifying payment…</p>
-          ) : (
-            <div className="space-y-2">
-              <p className="text-gray-700">
-                Status:{' '}
-                <span className="font-semibold">
-                  {paymentStatus ?? CamperPaymentStatus.FAILED}
-                </span>
-              </p>
-              {!!errorMessage && <p className="text-[14px] text-red-600">{errorMessage}</p>}
-              <div className="pt-2">
-                <Link className="text-[14px] font-medium text-blue-600 underline" href="/register">
-                  Go back to registration
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <AppModal openState={open} closeModal={() => setOpen(false)} title={modalTitle}>
-        <div className="px-6 py-6 font-poppins">
+      {/* <AppModal openState={open} closeModal={() => setOpen(false)} title={modalTitle}> */}
+        <div className="px-6 py-6 items-center justify-center font-poppins">
           {paymentStatus === CamperPaymentStatus.PAID && (
             <div className="space-y-2">
               <p className="text-[18px] font-semibold text-green-700">Your payment was successful.</p>
@@ -161,22 +129,23 @@ function RecieptPageContent() {
           )}
 
           <div className="mt-6 flex gap-3">
-            <button
+            {/* <button
               type="button"
               onClick={() => setOpen(false)}
               className="rounded-lg bg-gray-900 px-4 py-2 text-[14px] font-semibold text-white"
             >
               Close
-            </button>
+            </button> */}
             <Link
               href="/"
               className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-[14px] font-semibold text-gray-900"
             >
-              Register again
+              Go Home
             </Link>
           </div>
+          
         </div>
-      </AppModal>
+      {/* </AppModal> */}
     </div>
   )
 }
