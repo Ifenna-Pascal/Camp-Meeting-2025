@@ -131,7 +131,7 @@ const TopEvents = () => {
         </span>
         <p className="text-center text-[16px]">
           I wish to welcome everyone to the Young People Love Jesus Camp Meeting
-          2025, with theme Breaking Limits, a moment of encounter with God,
+          2026, with theme Greater Glory, a moment of encounter with God,
           where purpose is defined and our fire for God stirred. Your
           expectations and anticipations, will not be cut short.{" "}
         </p>
