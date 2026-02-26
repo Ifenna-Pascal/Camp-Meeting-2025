@@ -21,19 +21,19 @@ export const ministers = [
         name: 'Pst. Peter Favour (Nsukka)'
     },
     {
-        img: '/img/min-cbn.jpeg',
-        name: 'Minister CBN (Enugu)'
+        img: '/img/Minister-1.jpg',
+        name: 'Joseph Nnaji (Enugu)'
     },
-    {
-        img: '/img/oracle.jpeg',
-        name: "Min. God's Oracle (Enugu)"
-    },
-    {
-        img: '/img/lagos-min.jpeg',
-        name: 'Pst. Ben Jossy (Lagos)'
-    },
-    {
-        img: '/img/unn-min.jpeg',
-        name: 'Pst. Peter Obichukwu (UNN)'
-    }
+    // {
+    //     img: '/img/Minister-2.jpg',
+    //     name: ""
+    // },
+    // // {
+    //     img: '/img/lagos-min.jpeg',
+    //     name: 'Pst. Ben Jossy (Lagos)'
+    // },
+    // {
+    //     img: '/img/unn-min.jpeg',
+    //     name: 'Pst. Peter Obichukwu (UNN)'
+    // }
 ]

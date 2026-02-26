@@ -8,7 +8,7 @@ const CountDown = () => {
         <div data-aos="fade-left" className='flex flex-col  items-center justify-center pb-10'>
             <CalendarEdit size="32" color="#697689" variant="Bold"/>
             <span className='py-2 text-[16px]'>5 Days</span>
-            <span className='text-center  w-[300px]'>Monday(17th February) - Friday(22nd February).</span>
+            <span className='text-center  w-[300px]'>Monday(2nd March) - Friday(6th March).</span>
         </div>
         <div data-aos="fade-right" className='flex flex-col items-center justify-center pb-14'>
         <Information size="32" color="#697689" variant="Bold"/>          

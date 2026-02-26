@@ -18,7 +18,7 @@ const Guests = () => {
     focusOnSelect: true,
     draggable: true,
     dots: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     speed: 2000,
     afterChange: (current: number) => setCurrent(current),
     customPaging: (i: any) => (
@@ -42,7 +42,7 @@ const Guests = () => {
           dots: true,
           autoplaySped: 1000,
           speed: 500,
-          beforeChange: (current:number) => setCurrent(current),
+          beforeChange: (current: number) => setCurrent(current),
           customPaging: (i: any) => (
             <div
               className={`w-[3px]  mt-3 h-[3px] rounded-[3px] ${
@@ -55,19 +55,34 @@ const Guests = () => {
     ],
   };
   return (
-    <div id="ministering" data-aos="zoom-in" className="lg:max-w-[1100px] mx-11  mb-12">
-    <h2 className='font-semibold text-[22px] mb-2   text-center flex items-center justify-center pb-2'>Ministering...</h2>
+    <div
+      id="ministering"
+      data-aos="zoom-in"
+      className="lg:max-w-[1100px] mx-11  mb-12"
+    >
+      <h2 className="font-semibold text-[22px] mb-2   text-center flex items-center justify-center pb-2">
+        Ministering...
+      </h2>
       <Slider {...settings}>
-        {
-            ministers.map((minister, i) => {
-                return (
-                    <div key={i} className='flex items-center justify-center flex-col mx-auto w-full h-[450px]'>
-                        <Image src={minister.img} width={300} height={400} alt="event-img" className='w-full rounded-[10px] h-[400px] object-cover mb-3' />
-                        <span className='text-center flex items-center w-full justify-center font-poppins uppercase text-[14px] font-semibold'>{minister.name}</span>
-                     </div>
-                )
-            })
-        }
+        {ministers.map((minister, i) => {
+          return (
+            <div
+              key={i}
+              className="flex items-center justify-center flex-col mx-auto w-full h-[450px]"
+            >
+              <Image
+                src={minister.img}
+                width={300}
+                height={400}
+                alt="event-img"
+                className="w-full rounded-[10px] h-[400px] object-cover mb-3"
+              />
+              <span className="text-center flex items-center w-full justify-center font-poppins uppercase text-[14px] font-semibold">
+                {minister.name}
+              </span>
+            </div>
+          );
+        })}
       </Slider>
     </div>
   );
