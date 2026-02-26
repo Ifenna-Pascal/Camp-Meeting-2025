@@ -114,17 +114,7 @@ function RecieptPageContent() {
   return (
     <div className="min-h-screen bg-image-with-overlay flex items-center justify-center px-4">
       <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 max-w-md w-full shadow-2xl">
-        {/* Logo */}
-        <div className="flex justify-center mb-6">
-          <Image
-            src="https://res.cloudinary.com/tech-aku/image/upload/v1738105945/mallgrid/67719ec26cf2f770a4bfc32e/e2otimzj8zlvvbfaxa0v.png"
-            alt="YEMs-logo"
-            width={60}
-            height={60}
-          />
-        </div>
-
-        {/* Success State */}
+s     
         {paymentStatus === CamperPaymentStatus.PAID && (
           <div className="text-center space-y-4">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
@@ -146,12 +136,10 @@ function RecieptPageContent() {
               Payment Successful!
             </h2>
             <p className="text-gray-600 font-poppins">
-              Your registration for Young People Love Jesus Camp Meeting 2026
-              has been confirmed.
+            Your registration for has been confirmed.
+              Check your email for your <b>ACCESS TOKEN</b>.
             </p>
-            <p className="text-[14px] text-gray-500">
-              Check your email for your registration token and event details.
-            </p>
+           
           </div>
         )}
 

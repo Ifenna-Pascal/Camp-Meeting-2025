@@ -212,7 +212,7 @@ const RegistrationPage = () => {
           {...register("expectations")}
         />
         <button className="w-[230px] mt-4 bg-gray-700 mx-auto justify-center items-center flex border-none text-white py-4 font-semibold text-[18px]">
-          {loading ? "Loading..." : "Register Here"}
+          {loading ? "Loading..." : "Make Payment"}
         </button>
       </form>
       <ToastContainer />
