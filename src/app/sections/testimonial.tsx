@@ -60,7 +60,7 @@ const ReviewCarousel = () => {
         <ReviewCard
           name="Ben Victorious"
           role="Enugu Branch"
-          review="From meeting old friends and brethren and working together, to spending quality time together in worship, the experience- pure bliss. My story won't be complete without mentioning the Prophecies and Words of our Apostle and Ministers that came through, within the year 2023. I genuinely anticipate the new move of the Holy Spirit in this upcoming annual event: the Young People Love Jesus camp meeting 2025! Be there!"
+          review="From meeting old friends and brethren and working together, to spending quality time together in worship, the experience- pure bliss. My story won't be complete without mentioning the Prophecies and Words of our Apostle and Ministers that came through, within the year 2023. I genuinely anticipate the new move of the Holy Spirit in this upcoming annual event: the Young People Love Jesus camp meeting 2026! Be there!"
           src={"/img/ben.jpg"}
         />
         <ReviewCard
