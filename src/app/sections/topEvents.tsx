@@ -42,7 +42,6 @@ const events = [
     title: "Seminars",
     imgs: seminarImages,
   },
-
 ];
 
 const Event = ({ img, title, imgs, point }: IEvent) => {
@@ -107,7 +106,7 @@ const TopEvents = () => {
           );
         })}
       </div>
-    
+
       <div className="mt-10 bg-red-300">
         <Image
           src={"/img/flyer.jpeg"}

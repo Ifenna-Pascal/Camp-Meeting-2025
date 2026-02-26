@@ -34,7 +34,7 @@ const HeroSection = () => {
           Young People Love Jesus Camp Meeting 2026
         </h1>
         <p className="text-white text-center font-gara p-6 text-[18px]">
-          Breaking Limits, a moment of an encounter with God, through worship
+          Greater Glory, a moment of an encounter with God, through worship
           and fellowship.
         </p>
         <button
